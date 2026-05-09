@@ -48,6 +48,7 @@ This is a plugin for the easytier binary executable
 Enable the service, run
 
 ```
+chmod +x /etc/rc.d/rc.easytier
 /etc/rc.d/rc.easytier start
 ```
 
