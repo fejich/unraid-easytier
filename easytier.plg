@@ -46,9 +46,11 @@ Enable the service, run
 config directory: /mnt/user/appdata/easytier
 
 Web UI listening port 11211
+
 The usernames and passwords are admin
 
 Use：https://easytier.cn/guide/network/web-console.html
+
 Source: https://github.com/EasyTier/Easytier
 
 </INLINE>
