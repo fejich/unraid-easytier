@@ -1,0 +1,59 @@
+#!/bin/sh
+
+NAME="easytier"
+CONFIG_DIR="/boot/config/plugins/easytier"
+CMD="/usr/bin/easytier-web-embed -a 11211 -d $CONFIG_DIR/et.db & /usr/bin/easytier-core -w udp://127.0.0.1:22020/admin"
+PROCESSNAME="/usr/bin/easytier-web-embed"
+USERNAME="root"
+
+func_stop() {
+    if [ "$(ps aux | grep $PROCESSNAME | grep -v grep)" ]; then
+        echo -n "Stopping $NAME ... "
+        killall easytier-core
+        killall easytier-web-embed
+        sleep 1
+    fi
+
+    if [ ! "$(ps aux | grep $PROCESSNAME | grep -v grep)" ]; then
+        echo "Done!"
+    else
+        echo "Error!"
+    fi
+}
+
+func_start() {
+    echo -n "Starting $NAME ... "
+
+    # Ensure the easytier config directory exists
+    if [ ! -d "$CONFIG_DIR" ]; then
+        echo "Creating config directory at $CONFIG_DIR"
+        mkdir -p "$CONFIG_DIR"
+    fi
+
+    # Start easytier-web and easytier-core
+    su -p - $USERNAME -c "$CMD" &
+    sleep 1
+
+    if [ "$(ps aux | grep $PROCESSNAME | grep -v grep)" ]; then
+        echo "Started!"
+    else
+        echo "Error!"
+    fi
+}
+
+case "$1" in
+    "start")
+        func_start
+        ;;
+    "stop")
+        func_stop
+        ;;
+    "restart")
+        func_stop
+        sleep 1
+        func_start
+        ;;
+    *)
+        echo "Usage: $0 start|stop|restart"
+        ;;
+esac
