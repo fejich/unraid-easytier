@@ -19,10 +19,12 @@
 
 <FILE Name="/boot/config/plugins/&name;/&name;-&version;.tgz" Run="installpkg">
 <URL>https://raw.githubusercontent.com/&author;/unraid-&name;/main/&name;-&version;.tgz</URL>
+<SHA256>bb8578e34f08cbf31cab06f21e4529f3815799a1f4248890857de4ae40b4386c</SHA256>
 </FILE>
 
 <FILE Name="/boot/config/plugins/&name;/rc.easytier">
 <URL>https://raw.githubusercontent.com/&author;/unraid-&name;/main/rc.easytier</URL>
+<SHA256>210dba728f44a6e9ae382714f5df8ba51b9579193500286a6b4eda10b73e1d29</SHA256>
 </FILE>
 
 <FILE Name="/etc/rc.d/rc.easytier">
@@ -31,6 +33,7 @@
 
 <FILE Name="/boot/config/plugins/&name;/icon.png">
 <URL>https://raw.githubusercontent.com/&author;/unraid-&name;/main/logo.png</URL>
+<SHA256>3ba8f0b0a7cd03127e2f088867181cb5ffc8b214182ac69d2ab32d58974f3bea</SHA256>
 </FILE>
 
 <FILE Name="/usr/local/emhttp/plugins/&name;/images/&name;.png">
